@@ -128,7 +128,7 @@ export function SelectRolesStage() {
                         </div>
                         <h2
                             className="mt-1 text-4xl font-extrabold leading-10 tracking-tight text-gray-900 sm:leading-none sm:text-6xl lg:text-5xl xl:text-6xl">
-                            Producers! 🌟
+                            Hi
                         </h2>
                         <p className="mt-3 text-base text-gray-600 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl" style={{ whiteSpace: 'nowrap' }}>
                             Your goal is to achieve a high-score based on high profits, by selling many products to consumers 💰. The highest scoring players will win this game! <br />
@@ -209,7 +209,7 @@ export function SelectRolesStage() {
     if (player.get("role") === "producer") {
         return (
             <div className="md:min-w-96 lg:min-w-128 xl:min-w-192 flex flex-col items-center space-y-10 p-4">
-                <p>You will play as a <b>{player.get("role")}</b>!</p>
+                <p>You are a <b>{player.get("role")}</b>!</p>
                 <ProducerInfo />
                 <div className="relative inline-flex group">
                     <div
