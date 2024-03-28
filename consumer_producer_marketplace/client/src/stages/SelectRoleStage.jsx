@@ -78,6 +78,28 @@ export function SelectRolesStage() {
                             purchaseHistory: []
                         },
                     ]);
+                } else if (strategy == "twochoice"){
+                    game.set("agents", [
+                        {
+                            id: player.id,
+                            role: "producer",
+                            agent: "human",
+                            scores: [],
+                            productionHistory: []
+                        },
+                        {
+                            id: "Artificial Consumer Agent 1",
+                            strategy: "twochoice",
+                            role: "consumer",
+                            agent: "artificial",
+                            wallet: 24,
+                            score: 0,
+                            scores: [],
+                            cheatedHistory: [],
+                            scoreHistory: [],
+                            purchaseHistory: []
+                        },
+                    ]);
                 }
             }
             if (round.get("name") != "Round1") {
