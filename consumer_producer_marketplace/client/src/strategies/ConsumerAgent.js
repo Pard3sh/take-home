@@ -1,3 +1,5 @@
+// for now I don't think this is being used in the code base
+
 class ConsumerAgent {
   purchaseQuantity(wallet, productPrice) {
     throw new Error("This method should never be called on the parent class");
