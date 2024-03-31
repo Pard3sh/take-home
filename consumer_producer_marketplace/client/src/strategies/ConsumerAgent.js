@@ -38,12 +38,26 @@ export class TitforTat extends ConsumerAgent {
   }
 }
 
+class TwoChoice extends ConsumerAgent {
+  purchaseQuantity(wallet, productPrice) {
+    return Math.floor(wallet / productPrice);
+  }
+}
+
+export class TwoChoice extends ConsumerAgent {
+  purchaseQuantity(wallet, productPrice) {
+    return Math.floor(wallet / productPrice);
+  }
+}
+
 export function getConsumerAgentFromId(id) {
   switch (id) {
     case "Gullible":
       return new Gullible();
     case "Tit for tat":
       return new TitforTat();
+    case "Two Choice":
+      return new TwoChoice();
     default:
       console.log("No bot found with that ID");
   }
