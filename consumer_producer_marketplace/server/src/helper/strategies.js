@@ -84,6 +84,7 @@ function titfortatStrategy(
     const soldStock =
       mockQuantity <= remainingStock ? mockQuantity : remainingStock;
 
+    // no stocks were sold
     if (soldStock == 0) {
       noStockSold(
         initialStock,
@@ -303,7 +304,8 @@ function twochoiceStrategy(
   consumerAgent,
   capital
 ) {
-  if (roundNum == 1) {
+  // acts gullible the first two rounds
+  if (roundNum == 1 || roundNum == 2) {
     let wallet = consumerAgent.wallet;
     const mockQuantity = parseInt(wallet / productPrice);
     const soldStock =
@@ -338,6 +340,70 @@ function twochoiceStrategy(
         wallet,
         capital
       );
+    }
+    // starts considering history
+  } else {
+    // if cheated last round or the round before
+    if (
+      consumerAgent.cheatedHistory[roundNum - 1] ||
+      consumerAgent.cheatedHistory[roundNum - 2]
+    ) {
+      // buy no stocks
+      let wallet = consumerAgent.wallet;
+      const mockQuantity = parseInt(wallet / productPrice);
+      const soldStock = 0;
+
+      noStockSold(
+        initialStock,
+        player,
+        soldStock,
+        productPrice,
+        player,
+        consumerAgent,
+        productQuality,
+        productAdQuality,
+        round,
+        roundNum,
+        others,
+        remainingStock,
+        capital
+      );
+    } else {
+      // buy all available stocks
+      let wallet = consumerAgent.wallet;
+      const mockQuantity = parseInt(wallet / productPrice);
+      const soldStock =
+        mockQuantity <= remainingStock ? mockQuantity : remainingStock;
+      if (soldStock == 0) {
+        noStockSold(
+          initialStock,
+          productCost,
+          soldStock,
+          productCost,
+          player,
+          consumerAgent,
+          others
+        );
+      } else {
+        stockSold(
+          tempStock,
+          soldStock,
+          currentStock,
+          player,
+          others,
+          initialStock,
+          productCost,
+          productPrice,
+          productQuality,
+          productAdQuality,
+          round,
+          roundNum,
+          remainingStock,
+          consumerAgent,
+          wallet,
+          capital
+        );
+      }
     }
   }
 }
