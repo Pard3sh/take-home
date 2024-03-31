@@ -102,6 +102,8 @@ export function SelectRolesStage() {
                     ]);
                 }
             }
+
+            // get a better understanding of what this is doing here
             if (round.get("name") != "Round1") {
                 player.set("capital", player.get("capital") + 12)
             }
