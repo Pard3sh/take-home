@@ -1,4 +1,5 @@
 import { noStockSold, stockSold } from "./stocks";
+const { GPT } = require("openai");
 
 function gullibleStrategy(
   tempStock,
@@ -265,10 +266,10 @@ function twochoiceStrategy(
     // starts considering history
   } else {
     // if cheated last round or the round before
-    let cheated =
+    let producerCheated =
       consumerAgent.cheatedHistory[roundNum - 1] == true ||
       consumerAgent.cheatedHistory[roundNum - 2] == true;
-    if (cheated) {
+    if (producerCheated) {
       console.log("Cheating has happened");
 
       // buy no stocks
@@ -335,6 +336,25 @@ function twochoiceStrategy(
     console.log(others);
     game.set("agents", others);
   }
+}
+
+function llmStrategy(
+  tempStock,
+  currentStock,
+  player,
+  others,
+  initialStock,
+  productAdQuality,
+  productPrice,
+  productQuality,
+  round,
+  roundNum,
+  remainingStock,
+  consumerAgent,
+  capital,
+  game
+) {
+  const prompt = "";
 }
 
 module.exports = { gullibleStrategy, titfortatStrategy, twochoiceStrategy };
