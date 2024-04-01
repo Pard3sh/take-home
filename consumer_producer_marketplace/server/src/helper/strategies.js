@@ -265,10 +265,10 @@ function twochoiceStrategy(
     // starts considering history
   } else {
     // if cheated last round or the round before
-    if (
+    let cheated =
       consumerAgent.cheatedHistory[roundNum - 1] == true ||
-      consumerAgent.cheatedHistory[roundNum - 2] == true
-    ) {
+      consumerAgent.cheatedHistory[roundNum - 2] == true;
+    if (cheated) {
       console.log("Cheating has happened");
 
       // buy no stocks
