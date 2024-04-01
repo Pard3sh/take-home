@@ -47,6 +47,10 @@ async function updateProducerScores(game) {
       return p.role === "consumer" && p.agent === "artificial";
     });
 
+    console.log("In scores.js: ConsumerAgent: ", consumerAgent);
+
+    console.log("Heyyyy: ", consumerAgent["purchaseHistory"]);
+
     // player producers (not consumer and not artificial)
     const others = agents.filter((p) => {
       return p.role !== "consumer" || p.agent !== "artificial";
@@ -68,7 +72,8 @@ async function updateProducerScores(game) {
         roundNum,
         remainingStock,
         consumerAgent,
-        capital
+        capital,
+        game
       );
     } else if (consumerAgent.strategy == "titfortat") {
       titfortatStrategy(
@@ -84,9 +89,12 @@ async function updateProducerScores(game) {
         roundNum,
         remainingStock,
         consumerAgent,
-        capital
+        capital,
+        game
       );
     } else if (consumerAgent.strategy == "twochoice") {
+      console.log("scores 108: ", consumerAgent);
+
       twochoiceStrategy(
         tempStock,
         currentStock,
@@ -100,7 +108,8 @@ async function updateProducerScores(game) {
         roundNum,
         remainingStock,
         consumerAgent,
-        capital
+        capital,
+        game
       );
     }
   });

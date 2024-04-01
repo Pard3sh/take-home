@@ -102,6 +102,9 @@ function stockSold(
   let score = player.get("score") || 0;
   score += totalSales - totalCost;
 
+  console.log("Here we are selling stock! -------------------------");
+  console.log("Consumer Agent: ", consumerAgent);
+
   consumerAgent.purchaseHistory.push({
     productQuality: productQuality,
     productAdQuality: productAdQuality,

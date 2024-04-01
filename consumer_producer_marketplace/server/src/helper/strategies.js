@@ -13,7 +13,8 @@ function gullibleStrategy(
   roundNum,
   remainingStock,
   consumerAgent,
-  capital
+  capital,
+  game
 ) {
   let wallet = consumerAgent.wallet;
   const productCost = currentStock.productCost;
@@ -74,10 +75,14 @@ function titfortatStrategy(
   roundNum,
   remainingStock,
   consumerAgent,
-  capital
+  capital,
+  game
 ) {
   if (roundNum == 1) {
+    console.log("We are in round 1 for titfortat");
     let wallet = consumerAgent.wallet;
+
+    console.log("wallet value: ", wallet);
     const productCost = currentStock.productCost;
     const mockQuantity = parseInt(wallet / productPrice);
     const soldStock =
@@ -206,10 +211,13 @@ function twochoiceStrategy(
   roundNum,
   remainingStock,
   consumerAgent,
-  capital
+  capital,
+  game
 ) {
+  console.log("2 choice strat bby");
   // acts gullible the first two rounds
   if (roundNum == 1 || roundNum == 2) {
+    console.log("round 1 or 2");
     let wallet = consumerAgent.wallet;
     const mockQuantity = parseInt(wallet / productPrice);
     const productCost = currentStock.productCost;
@@ -233,6 +241,8 @@ function twochoiceStrategy(
         capital
       );
     } else {
+      console.log("round 1 or 2");
+      console.log("Consumer agent here in the round: ", consumerAgent);
       stockSold(
         tempStock,
         soldStock,
@@ -256,9 +266,11 @@ function twochoiceStrategy(
   } else {
     // if cheated last round or the round before
     if (
-      consumerAgent.cheatedHistory[roundNum - 1] ||
-      consumerAgent.cheatedHistory[roundNum - 2]
+      consumerAgent.cheatedHistory[roundNum - 1] == True ||
+      consumerAgent.cheatedHistory[roundNum - 2] == True
     ) {
+      console.log("Cheating has happened");
+
       // buy no stocks
       let wallet = consumerAgent.wallet;
       const mockQuantity = parseInt(wallet / productPrice);
