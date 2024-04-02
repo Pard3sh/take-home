@@ -266,8 +266,8 @@ function twochoiceStrategy(
   } else {
     // if cheated last round or the round before
     if (
-      consumerAgent.cheatedHistory[roundNum - 1] == True ||
-      consumerAgent.cheatedHistory[roundNum - 2] == True
+      consumerAgent.cheatedHistory[roundNum - 1] == true ||
+      consumerAgent.cheatedHistory[roundNum - 2] == true
     ) {
       console.log("Cheating has happened");
 
